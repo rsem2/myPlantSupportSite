@@ -1,0 +1,9 @@
+{% if latest_plant_list %}
+    <ul>
+    {% for plant in latest_plant_list %}
+        <li><a href="/reportPlantStatus/{{ plant.id }}/">{{ plant.plant_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No plants are available.</p>
+{% endif %}

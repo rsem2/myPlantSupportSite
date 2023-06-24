@@ -1,0 +1,7 @@
+<form action="{% url 'plant:comment' plant.id %}" method ="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>{{ plant.plant_id }}</h1></legend>
+    </fieldset>
+
+</form>
