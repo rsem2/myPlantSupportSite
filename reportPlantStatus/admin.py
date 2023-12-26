@@ -1,3 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import(
+    Plant,
+    Comment,
+    Reservoir
+)
+
+admin.site.register(Plant)
+admin.site.register(Reservoir)
+admin.site.register(Comment)

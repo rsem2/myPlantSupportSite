@@ -1,4 +1,13 @@
-<h1>{{ plant.plant_name }}</h1>
-<p>Plant status: {{ plant.plant_status }}</p>
-<p>Soil moisture: {{ plant.soil_moisture }}</p>
-<p>Date added: {{ plant.pub_date }}</p>
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Here are the details of {{ plant.plant_name }}</h1>
+    <ul>
+        <p>Plant status: {{ plant.plant_status }}</p>
+        <p>Soil moisture: {{ plant.soil_moisture }}</p>
+        <p>Date added: {{ plant.pub_date }}</p>
+    </ul>
+</div>
+{% endblock %}
