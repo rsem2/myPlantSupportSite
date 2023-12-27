@@ -21,6 +21,11 @@ class Reservoir(models.Model):
         DEAD = 5, _("Dead")
         MISSING = 6, _("Missing")
 
+    reservoir_status = models.IntegerField(
+        choices=ReservoirStatus.choices,
+        default=ReservoirStatus.OK
+    )
+
     pub_date = models.DateTimeField("date published")
     updated  = models.DateTimeField(auto_now=True)
 

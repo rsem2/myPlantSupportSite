@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Here are the details of {{ reservoir.reservoir_name }}</h1>
+    <ul>
+        <p>Details: {{ reservoir.details }}</p>
+        <p>Water level: {{ reservoir.water_level }}</p>
+        <p>Reservoir status: {{ reservoir.reservoir_status }}</p>
+        <p>Date added: {{ reservoir.pub_date }}</p>
+    </ul>
+</div>
+{% endblock %}
