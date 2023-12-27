@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
-
 {% block content %}
- 
+<h1>{{ plant.plant_name }} - Update</h1>
+
 <form method="POST", action="." enctype="multipart/form-data"> {% csrf_token %}
     {{ form.as_p }}
 
-    <button type="submit">Send</button>
+    <button type="submit" name="update">Update</button>
+    <button type="submit" name="cancel">Cancel</button>
+
 </form>
 
 {% endblock %}

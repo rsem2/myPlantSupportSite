@@ -1,1 +1,14 @@
-{% extends "form.html" %}
+{% extends "base.html" %}
+
+{% block content %}
+ 
+<form method="POST", action="." enctype="multipart/form-data"> {% csrf_token %}
+    {{ form.as_p }}
+
+    <button class="btn btn-primary" type="submit" name="add">Submit and go to view</button>
+    <button class="btn btn-primary" type="submit" name="add_more">Submit and add another</button>
+    
+</form>
+
+<a class="btn btn-danger" href="/reportPlantStatus/" role="button">Cancel and go back to plants</a>
+{% endblock %}

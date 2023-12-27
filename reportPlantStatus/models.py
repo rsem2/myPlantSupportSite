@@ -26,11 +26,14 @@ class Reservoir(models.Model):
         default=ReservoirStatus.OK
     )
 
-    pub_date = models.DateTimeField("date published")
+    pub_date = models.DateTimeField(auto_now_add=True)
     updated  = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.reservoir_name
+    
+    def get_status(self):
+        return self.ReservoirStatus(self.reservoir_status).label
 
 
 class Plant(models.Model):
@@ -53,11 +56,15 @@ class Plant(models.Model):
     )
 
     soil_moisture = models.IntegerField(default=0)
-    pub_date = models.DateTimeField("date published")
+    pub_date = models.DateTimeField(auto_now_add=True)
     updated  = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.plant_name
+    
+    def get_status(self):
+        return self.PlantStatus(self.plant_status).label
+
 
 
 class Comment(models.Model):

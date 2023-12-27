@@ -3,11 +3,31 @@
 {% block content %}
 
 <div class="container">
-    <h1>Here are the details of {{ plant.plant_name }}</h1>
+    <h1>{{ plant.plant_name }}</h1>
+    {% if user.is_authenticated %}
+    <div class="container">
+        <form method="POST", action="." enctype="multipart/form-data"> {% csrf_token %}
+            <a class="btn btn-primary" href="/reportPlantStatus/{{ plant.pk }}/edit/" role="button">Edit</a>
+            <button type="button" class="btn btn-success" disabled>Water</button>
+            <button class="btn btn-danger" type="submit" name="delete" onclick="return confirm('Are you sure?');">Delete</button>
+        </form>
+    </div>
+    {% endif %}
     <ul>
-        <p>Plant status: {{ plant.plant_status }}</p>
+        <p>{{plant.details}}</p>
+        <p>Plant status: {{ plant.get_status }}</p>
         <p>Soil moisture: {{ plant.soil_moisture }}</p>
+        <!-- TODO: Water button -->
+        {% if reservoir %}
+        <p>Reservoir: <a href="/reportPlantStatus/reservoir/{{reservoir.pk}}/">{{ reservoir.reservoir_name }}</a></p>
+        {% endif %}
+        {% if plant.image %}
+            <img src="{{ plant.image.url }}" class="img-thumbnail"/>  
+        {% endif %}
         <p>Date added: {{ plant.pub_date }}</p>
+        <p>Date last updated: {{ plant.updated }}</p>
     </ul>
 </div>
+
+
 {% endblock %}

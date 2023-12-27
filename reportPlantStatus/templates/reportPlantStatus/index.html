@@ -2,17 +2,21 @@
 
 {% block content %}
 
-<div class="card-group">
-<h1>Here be plants</h1>
-</div>
-{% endblock %}
+<div class="container">
+    {% if latest_plant_list %}
 
-<!-- {% if latest_plant_list %}
-    <ul>
-    {% for plant in latest_plant_list %}
-        <li><a href="/reportPlantStatus/{{ plant.id }}/">{{ plant.plant_name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No plants are available.</p>
-{% endif %} -->
+        <h1>Here be plants</h1>
+        
+        {% for plant in latest_plant_list %}
+            <div class="card-group">
+                <a href="/reportPlantStatus/{{ plant.id }}/">{{ plant.plant_name }}</a>
+            </div>
+        {% endfor %}
+            
+        
+    {% else %}
+        <p>No plants are available.</p>
+    {% endif %}
+
+
+{% endblock %}
